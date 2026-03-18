@@ -21,7 +21,7 @@ with st.form("my_form"):
             st.warning('weight and height must be greater than 0', icon="⚠️")
         else: 
             results = berechne_bmi(Weight, Height, klassifizieren=True)
-            #st.write(berechne_bmi(Weight, Height, klassifizieren=True))
+            
             st.write("Outside the form")
             st.session_state['data_df'] = pd.concat([st.session_state['data_df'], pd.DataFrame([results])], ignore_index=True)
             # --- CODE UPDATE: save data to data manager ---
