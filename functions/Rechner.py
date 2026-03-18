@@ -1,4 +1,7 @@
-# ...existing code...
+from datetime import datetime
+import streamlit as st
+import pandas as pd
+import pytz
 def berechne_bmi(gewicht, groesse, einheit='m', klassifizieren=False):
     """
     Berechnet den Body-Mass-Index (BMI).
@@ -36,14 +39,15 @@ def berechne_bmi(gewicht, groesse, einheit='m', klassifizieren=False):
             kategorie = "Übergewicht"
         else:
             kategorie = "Adipositas"
-        return bmi, kategorie
 
-    return bmi
-
-# Beispiele:
-# berechne_bmi(70, 1.75) -> ~22.86
-# berechne_bmi(70, 175, einheit='cm', klassifizieren=True) -> (22.86..., 'Normalgewicht')
-# ...existing code...
+        return {
+        "timestamp": datetime.now(pytz.timezone('Europe/Zurich')),  # Current swiss time
+        "height": groesse_m,
+        "weight": gewicht,
+        "bmi": round(bmi, 1),
+        "category": kategorie }
+    
+   
 
 
  
